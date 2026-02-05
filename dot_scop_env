@@ -1,0 +1,5 @@
+SCOP_USERDOMAIN='@samsung.com'
+#'otp', 'sms', 'push'
+SCOP_AUTHMETHOD='push'
+SCOP_USERNAME=op://Employee/SCOP/username
+SCOP_PASSWORD=op://Employee/SCOP/password
