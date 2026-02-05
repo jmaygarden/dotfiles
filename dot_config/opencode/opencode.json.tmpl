@@ -1,0 +1,53 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "mcp-github-public": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/github_public_token" }}"
+      },
+      "enabled": true
+    },
+    "mcp-github-samsung": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "-e",
+        "GITHUB_HOST",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/github_samsung_token" }}",
+        "GITHUB_HOST": "https://github.ecodesamsung.com"
+      },
+      "enabled": true
+    },
+    "mcp-atlassian": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--python=3.12",
+        "mcp-atlassian"
+      ],
+      "environment": {
+        "CONFLUENCE_URL": "https://smartthings.atlassian.net/wiki",
+        "CONFLUENCE_USERNAME": "{{ onepasswordRead "op://Employee/OpenCode Config/atlassian_username" }}",
+        "CONFLUENCE_API_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/atlassian_api_token" }}",
+        "JIRA_URL": "https://smartthings.atlassian.net",
+        "JIRA_USERNAME": "{{ onepasswordRead "op://Employee/OpenCode Config/atlassian_username" }}",
+        "JIRA_API_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/atlassian_api_token" }}"
+      },
+      "enabled": true
+    }
+  }
+}
