@@ -1,0 +1,13 @@
+# Ignore .git directories and related files in config folders
+**/.git/
+**/.git
+**/.gitignore
+**/.gitattributes
+
+# Ignore common temporary and cache files
+**/.DS_Store
+**/node_modules/
+**/__pycache__/
+**/*.pyc
+**/.venv/
+**/.env
