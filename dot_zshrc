@@ -103,10 +103,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH="$HOME/.local/bin:$PATH"
 . "$HOME/.cargo/env"
-export PATH="$HOME/.cargo/bin:$PATH"
-
+export PATH="/usr/local/go/bin:$HOME/go/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init $(basename $SHELL))"
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
