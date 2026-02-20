@@ -1,6 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["opencode-beads"],
+  "plugin": [],
+  "default_agent": "plan",
+  "formatter": {
+    "cargofmt": {
+      "disabled": false
+    }
+  },
   "mcp": {
     "mcp-github-public": {
       "type": "local",
@@ -12,7 +18,7 @@
       "environment": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/github_public_token" }}"
       },
-      "enabled": true
+      "enabled": false
     },
     "mcp-github-samsung": {
       "type": "local",
@@ -31,7 +37,7 @@
         "GITHUB_PERSONAL_ACCESS_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/github_samsung_token" }}",
         "GITHUB_HOST": "https://github.ecodesamsung.com"
       },
-      "enabled": true
+      "enabled": false
     },
     "mcp-atlassian": {
       "type": "local",
@@ -47,19 +53,6 @@
         "JIRA_URL": "https://smartthings.atlassian.net",
         "JIRA_USERNAME": "{{ onepasswordRead "op://Employee/OpenCode Config/atlassian_username" }}",
         "JIRA_API_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/atlassian_api_token" }}"
-      },
-      "enabled": true
-    },
-    "mcp-atlassian-remote": {
-      "type": "remote",
-      "url": "https://mcp.atlassian.com/v1/mcp",
-      "enabled": true
-    },
-    "mcp-agent-mail": {
-      "type": "remote",
-      "url": "http://127.0.0.1:8765/api/",
-      "headers": {
-        "Authorization": "Bearer 5e1c8a8a72e68235f6da785c117d6df583c23e790228781cbc9504f67ce581c1"
       },
       "enabled": true
     }
