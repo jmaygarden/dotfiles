@@ -10,3 +10,6 @@ vim.keymap.set(
 	end,
 	{ silent = true, buffer = bufnr }
 )
+
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>yy", '"+yy')
