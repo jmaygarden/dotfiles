@@ -2,9 +2,11 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": [],
   "default_agent": "plan",
-  "formatter": {
-    "cargofmt": {
-      "disabled": false
+  "permission": {
+    "bash": {
+      "git add *": "deny",
+      "git commit *": "deny",
+      "git push *": "deny"
     }
   },
   "mcp": {
