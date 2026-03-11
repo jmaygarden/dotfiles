@@ -2,6 +2,15 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": [],
   "default_agent": "plan",
+  "formatter": {
+    "rustfmt": {
+      "disabled": true
+    },
+    "cargofmt": {
+      "command": ["cargo", "fmt", "--"],
+      "extensions": [".rs"]
+    }
+  },
   "permission": {
     "bash": {
       "git add *": "deny",
@@ -51,11 +60,10 @@
     "mcp-*": false, // block all MCP tools by default
   },
   "agent": {
-    "general": { "model": "github-copilot/gpt-4.1" },
-    "explore": { "model": "github-copilot/gpt-4.1" },
-    "compaction": { "model": "github-copilot/gpt-4.1" },
-    "title": { "model": "github-copilot/gpt-4.1" },
-    "summary": { "model": "github-copilot/gpt-4.1" },
+    "general": { "model": "github-copilot/gpt-5-mini" },
+    "explore": { "model": "github-copilot/gpt-5-mini" },
+    "title": { "model": "github-copilot/gpt-5-mini" },
+    "summary": { "model": "github-copilot/gpt-5-mini" },
     "explore-atlassian": {
       "description": "Fast agent specialized for querying Confluence and Jira. Use this when asked to search Confluence documents or Jira issues.",
       "mode": "subagent",
