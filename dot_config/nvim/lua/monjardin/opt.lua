@@ -35,5 +35,8 @@ vim.opt.showmode = false
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 -- Copy to the terminal client clipboard using OSC 52 escape sequences
-vim.g.clipboard = "osc52"
-vim.opt.clipboard = "unnamed"
+local remote = vim.env.SSH_CONNECTION or vim.env.SSH_CLIENT or vim.env.SSH_TTY
+if remote then
+	vim.g.clipboard = "osc52"
+	vim.opt.clipboard = "unnamed"
+end
