@@ -1,0 +1,16 @@
+github.com:
+  users:
+    jmaygarden:
+      oauth_token: {{ onepasswordRead "op://Employee/GitHub/jmaygarden" }}
+    judge-maygarden_stus:
+      oauth_token: {{ onepasswordRead "op://Employee/GitHub/judge-maygarden_stus" }}
+  git_protocol: ssh
+  user: jmaygarden
+  oauth_token: {{ onepasswordRead "op://Employee/GitHub/jmaygarden" }}
+github.ecodesamsung.com:
+  users:
+    judge-maygarden:
+      oauth_token: {{ onepasswordRead "op://Employee/GitHub/judge-maygarden" }}
+  git_protocol: ssh
+  user: judge-maygarden
+  oauth_token: {{ onepasswordRead "op://Employee/GitHub/judge-maygarden" }}
