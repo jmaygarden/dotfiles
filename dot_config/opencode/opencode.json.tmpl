@@ -15,7 +15,8 @@
     "bash": {
       "git add *": "deny",
       "git commit *": "deny",
-      "git push *": "deny"
+      "git push *": "deny",
+      "sudo *": "deny"
     }
   },
   "mcp": {
@@ -23,75 +24,36 @@
       "type": "remote",
       "url": "https://mcp.atlassian.com/v1/mcp",
       "enabled": true
-    },
-    "mcp-github-public": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-github"
-      ],
-      "environment": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/github_public_token" }}"
-      },
-      "enabled": true
-    },
-    "mcp-github-samsung": {
-      "type": "local",
-      "command": [
-        "docker",
-        "run",
-        "-i",
-        "--rm",
-        "-e",
-        "GITHUB_PERSONAL_ACCESS_TOKEN",
-        "-e",
-        "GITHUB_HOST",
-        "ghcr.io/github/github-mcp-server"
-      ],
-      "environment": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "{{ onepasswordRead "op://Employee/OpenCode Config/github_samsung_token" }}",
-        "GITHUB_HOST": "https://github.ecodesamsung.com"
-      },
-      "enabled": true
     }
   },
   "tools": {
-    "mcp-*": false, // block all MCP tools by default
+    "mcp-*": false
   },
   "agent": {
-    "general": { "model": "github-copilot/claude-haiku-4.5" },
-    "explore": { "model": "github-copilot/claude-haiku-4.5" },
+    "general": { "model": "github-copilot/gpt-5-mini" },
+    "explore": { "model": "github-copilot/gpt-5-mini" },
     "title": { "model": "github-copilot/gpt-5-mini" },
     "summary": { "model": "github-copilot/gpt-5-mini" },
     "explore-atlassian": {
       "description": "Fast agent specialized for querying Confluence and Jira. Use this when asked to search Confluence documents or Jira issues.",
       "mode": "subagent",
-      "model": "github-copilot/claude-haiku-4.5",
+      "model": "github-copilot/gpt-5-mini",
       "prompt": "{file:./prompts/explore-atlassian.txt}",
       "tools": {
         "*": false,
         "mcp-atlassian_*": true
       }
     },
-    "explore-github-public": {
-      "description": "Fast agent specialized for querying GitHub. A repository is often referenced in the form <owner>/<repo>. Use this when asked to search public GitHub or to lookup repositories or pull requests (PR) in the PhysicalGraph owner. This agent is preferred over doing a webfecth to github.com.",
+    "explore-github": {
+      "description": "Fast agent specialized for querying GitHub. Use this when asked to inspect repos or pull requests.",
       "mode": "subagent",
-      "model": "github-copilot/claude-haiku-4.5",
+      "model": "github-copilot/gpt-5-mini",
       "prompt": "{file:./prompts/explore-github.txt}",
-      "tools": {
-        "*": false,
-        "mcp-github-public_*": true
-      }
-    },
-    "explore-github-samsung": {
-      "description": "Fast agent specialized for querying GitHub. Use this when asked to search eCode or Samsung GitHub or to lookup repositories or pull requests (PR) in the iot or iot-hub owner. A repository is oftern referenced in the form <owner>/<repo>.",
-      "mode": "subagent",
-      "model": "github-copilot/claude-haiku-4.5",
-      "prompt": "{file:./prompts/explore-github.txt}. Note that the owner is usually iot or iot-hub.",
-      "tools": {
-        "*": false,
-        "mcp-github-samsung_*": true
+      "permission": {
+        "bash": {
+          "*": "deny",
+          "gh *": "allow"
+        }
       }
     }
   }
