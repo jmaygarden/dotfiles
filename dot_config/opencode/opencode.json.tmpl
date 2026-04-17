@@ -30,14 +30,9 @@
     "mcp-*": false
   },
   "agent": {
-    "general": { "model": "github-copilot/gpt-5-mini" },
-    "explore": { "model": "github-copilot/gpt-5-mini" },
-    "title": { "model": "github-copilot/gpt-5-mini" },
-    "summary": { "model": "github-copilot/gpt-5-mini" },
     "explore-atlassian": {
       "description": "Fast agent specialized for querying Confluence and Jira. Use this when asked to search Confluence documents or Jira issues.",
       "mode": "subagent",
-      "model": "github-copilot/gpt-5-mini",
       "prompt": "{file:./prompts/explore-atlassian.txt}",
       "tools": {
         "*": false,
@@ -47,7 +42,6 @@
     "explore-github": {
       "description": "Fast agent specialized for querying GitHub. Use this when asked to inspect repos or pull requests.",
       "mode": "subagent",
-      "model": "github-copilot/gpt-5-mini",
       "prompt": "{file:./prompts/explore-github.txt}",
       "permission": {
         "bash": {
