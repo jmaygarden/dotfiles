@@ -29,6 +29,15 @@ metadata:
 - Do not create files or run commands that modify the user's system state.
 - Adapt search depth to the thoroughness level requested by the caller.
 - Avoid emojis in responses.
+- When inspecting pull request feedback, do not rely on a single endpoint.
+- For PR feedback triage, collect:
+  - review comments via `gh api repos/<owner>/<repo>/pulls/<number>/comments --paginate`
+  - issue comments via `gh api repos/<owner>/<repo>/issues/<number>/comments --paginate`
+  - review summaries via `gh pr view <number> --repo <owner>/<repo> --json reviews`
+- Reconstruct review threads using `in_reply_to_id`.
+- Treat every top-level review comment as a feedback item even if it has no replies.
+- Treat standalone issue comments and non-empty review bodies as separate feedback items.
+- Distinguish author replies from reviewer feedback when summarizing action items.
 
 ## When to use me
 Use this skill when you need to locate GitHub repositories, issues, pull requests, or comments, especially when the task requires careful GitHub-side searching rather than local code inspection.
